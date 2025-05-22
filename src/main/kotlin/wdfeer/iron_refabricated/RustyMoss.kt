@@ -7,12 +7,18 @@ import net.minecraft.block.BlockWithEntity
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.ItemEntity
+import net.minecraft.fluid.Fluids
+import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import wdfeer.iron_refabricated.IronRefabricated.MOD_ID
+import kotlin.random.Random
 
 object RustyMoss : BlockWithEntity(FabricBlockSettings.create()) {
     fun register() {
@@ -33,11 +39,30 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.create()) {
 private val rustyMossBlockEntityType = FabricBlockEntityTypeBuilder.create(::RustyMossBlockEntity, RustyMoss).build()
     .also { Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MOD_ID, "rusty_moss"), it) }
 
+const val CHANCE: Float = 0.004f // TODO: Decrease later
+
 private class RustyMossBlockEntity(
     pos: BlockPos?,
     state: BlockState?
 ) : BlockEntity(rustyMossBlockEntityType, pos, state), BlockEntityTicker<RustyMossBlockEntity> {
     override fun tick(world: World?, pos: BlockPos?, state: BlockState?, blockEntity: RustyMossBlockEntity?) {
-        TODO("drop rusty nuggets with flowing water")
+        Companion.tick(world, pos, state, blockEntity)
+    }
+
+    companion object {
+        fun tick(world: World?, pos: BlockPos?, state: BlockState?, blockEntity: RustyMossBlockEntity?) {
+            val serverWorld = world as? ServerWorld ?: return
+            if (pos == null) return
+
+            val adjacentPositions = listOf(pos.up(), pos.down(), pos.north(), pos.east(), pos.south(), pos.west())
+
+            val waterPos = adjacentPositions.find { world.getBlockState(it).fluidState.fluid == Fluids.FLOWING_WATER }
+
+            if (waterPos != null && Random.nextFloat() < CHANCE) {
+                val entity =
+                    waterPos.toCenterPos().run { ItemEntity(serverWorld, x, y, z, ItemStack(Items.IRON_NUGGET)) }
+                world.spawnEntity(entity)
+            }
+        }
     }
 }
