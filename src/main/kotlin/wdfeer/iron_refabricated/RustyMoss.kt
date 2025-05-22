@@ -12,7 +12,6 @@ import net.minecraft.fluid.Fluids
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.world.ServerWorld
@@ -66,7 +65,7 @@ private class RustyMossBlockEntity(
 
             if (waterPos != null && Random.nextFloat() < CHANCE) {
                 val entity =
-                    waterPos.toCenterPos().run { ItemEntity(serverWorld, x, y, z, ItemStack(Items.IRON_NUGGET)) }
+                    waterPos.toCenterPos().run { ItemEntity(serverWorld, x, y, z, ItemStack(RustyNugget)) }
                 world.spawnEntity(entity)
             }
         }
