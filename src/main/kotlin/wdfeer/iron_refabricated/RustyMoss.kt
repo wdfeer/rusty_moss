@@ -32,7 +32,7 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.create()) {
         state: BlockState?,
         type: BlockEntityType<T>?
     ): BlockEntityTicker<T>? {
-        return checkType(type, rustyMossBlockEntityType, RustyMossBlockEntity::tick);
+        return checkType(type, rustyMossBlockEntityType, RustyMossBlockEntity::tick)
     }
 }
 
