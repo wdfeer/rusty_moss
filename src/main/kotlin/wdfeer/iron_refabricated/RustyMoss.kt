@@ -1,8 +1,11 @@
 package wdfeer.iron_refabricated
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.ModifyEntries
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
+import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
 import net.minecraft.block.Blocks
@@ -13,6 +16,7 @@ import net.minecraft.entity.ItemEntity
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
+import net.minecraft.item.ItemGroups
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -22,9 +26,6 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import wdfeer.iron_refabricated.IronRefabricated.MOD_ID
 import kotlin.random.Random
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.ModifyEntries
-import net.minecraft.item.ItemGroups
 
 private val id = Identifier.of(MOD_ID, "rusty_moss")
 
@@ -49,6 +50,9 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.copy(Blocks.MOSS_BLOCK)) 
     ): BlockEntityTicker<T>? {
         return checkType(type, rustyMossBlockEntityType, RustyMossBlockEntity::tick)
     }
+
+    @Suppress("OVERRIDE_DEPRECATION")
+    override fun getRenderType(state: BlockState?): BlockRenderType = BlockRenderType.MODEL
 }
 
 private val rustyMossBlockEntityType = FabricBlockEntityTypeBuilder.create(::RustyMossBlockEntity, RustyMoss).build()

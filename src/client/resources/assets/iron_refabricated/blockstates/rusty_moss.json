@@ -1,7 +1,5 @@
 {
   "variants": {
-    "": {
-        "model": "iron_refabricated:block/rusty_moss"
-      }
+    "": { "model": "iron_refabricated:block/rusty_moss" }
   }
 }
