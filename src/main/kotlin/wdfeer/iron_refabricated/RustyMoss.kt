@@ -1,5 +1,6 @@
 package wdfeer.iron_refabricated
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
 import net.minecraft.block.BlockState
@@ -21,6 +22,10 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import wdfeer.iron_refabricated.IronRefabricated.MOD_ID
 import kotlin.random.Random
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.ModifyEntries
+import net.minecraft.item.ItemGroups
+
 
 private val id = Identifier.of(MOD_ID, "rusty_moss")
 
@@ -29,6 +34,11 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.copy(Blocks.MOSS_BLOCK)) 
         Registry.register(Registries.BLOCK, id, this)
         Registry.register(Registries.BLOCK_ENTITY_TYPE, id, rustyMossBlockEntityType)
         Registry.register(Registries.ITEM, id, BlockItem(this, Item.Settings()))
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL)
+            .register(ModifyEntries { itemGroup: FabricItemGroupEntries ->
+                itemGroup.add(this.asItem())
+            })
     }
 
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = RustyMossBlockEntity(pos, state)
