@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
+import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
@@ -23,9 +24,10 @@ import kotlin.random.Random
 
 private val id = Identifier.of(MOD_ID, "rusty_moss")
 
-object RustyMoss : BlockWithEntity(FabricBlockSettings.create()) {
+object RustyMoss : BlockWithEntity(FabricBlockSettings.copy(Blocks.MOSS_BLOCK)) {
     fun register() {
         Registry.register(Registries.BLOCK, id, this)
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, id, rustyMossBlockEntityType)
         Registry.register(Registries.ITEM, id, BlockItem(this, Item.Settings()))
     }
 
@@ -41,7 +43,6 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.create()) {
 }
 
 private val rustyMossBlockEntityType = FabricBlockEntityTypeBuilder.create(::RustyMossBlockEntity, RustyMoss).build()
-    .also { Registry.register(Registries.BLOCK_ENTITY_TYPE, id, it) }
 
 const val CHANCE: Float = 0.004f // TODO: Decrease later
 
