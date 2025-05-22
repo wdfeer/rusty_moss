@@ -9,6 +9,7 @@ object IronRefabricated : ModInitializer {
 
 	override fun onInitialize() {
 		IronEnchantment.register()
+		RustyNugget.register()
 		logger.info("Iron just got refabricated!")
 	}
 }
