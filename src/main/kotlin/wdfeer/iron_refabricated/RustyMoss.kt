@@ -57,7 +57,7 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.copy(Blocks.MOSS_BLOCK)) 
 
 private val rustyMossBlockEntityType = FabricBlockEntityTypeBuilder.create(::RustyMossBlockEntity, RustyMoss).build()
 
-const val CHANCE: Float = 0.004f // TODO: Decrease later
+const val CHANCE: Float = 0.0004f
 
 private class RustyMossBlockEntity(
     pos: BlockPos?,
