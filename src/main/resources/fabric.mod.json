@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "iron_refabricated",
+	"version": "${version}",
+	"name": "Iron Refabricated",
+	"description": "Diversify iron farming.",
+	"authors": [
+		"wdfeer"
+	],
+	"contact": {
+		"sources": "https://github.com/wdfeer/iron_refabricated"
+	},
+	"license": "GPL-3.0",
+	"icon": "assets/iron_refabricated/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "wdfeer.iron_refabricated.IronRefabricated",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "wdfeer.iron_refabricated.IronRefabricatedClient",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"iron_refabricated.mixins.json",
+		{
+			"config": "iron_refabricated.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	}
+}
