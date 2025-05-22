@@ -1,5 +1,7 @@
 package wdfeer.iron_refabricated
 
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.ModifyEntries
@@ -20,10 +22,14 @@ import net.minecraft.item.ItemGroups
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
+import net.minecraft.world.biome.BiomeKeys
+import net.minecraft.world.gen.GenerationStep
 import wdfeer.iron_refabricated.IronRefabricated.MOD_ID
 import kotlin.random.Random
 
@@ -39,6 +45,12 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.copy(Blocks.MOSS_BLOCK)) 
             .register(ModifyEntries { itemGroup: FabricItemGroupEntries ->
                 itemGroup.add(this.asItem())
             })
+
+        BiomeModifications.addFeature(
+            BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES),
+            GenerationStep.Feature.TOP_LAYER_MODIFICATION, // must happen after vegetal_decoration
+            RegistryKey.of(RegistryKeys.PLACED_FEATURE, id)
+        )
     }
 
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = RustyMossBlockEntity(pos, state)
