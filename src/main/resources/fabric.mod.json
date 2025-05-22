@@ -19,20 +19,10 @@
 				"value": "wdfeer.iron_refabricated.IronRefabricated",
 				"adapter": "kotlin"
 			}
-		],
-		"client": [
-			{
-				"value": "wdfeer.iron_refabricated.IronRefabricatedClient",
-				"adapter": "kotlin"
-			}
 		]
 	},
 	"mixins": [
-		"iron_refabricated.mixins.json",
-		{
-			"config": "iron_refabricated.client.mixins.json",
-			"environment": "client"
-		}
+		"iron_refabricated.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
