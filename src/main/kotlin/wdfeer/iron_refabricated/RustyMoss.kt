@@ -26,7 +26,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.ModifyEntries
 import net.minecraft.item.ItemGroups
 
-
 private val id = Identifier.of(MOD_ID, "rusty_moss")
 
 object RustyMoss : BlockWithEntity(FabricBlockSettings.copy(Blocks.MOSS_BLOCK)) {
