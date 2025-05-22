@@ -9,6 +9,8 @@ import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.ItemEntity
 import net.minecraft.fluid.Fluids
+import net.minecraft.item.BlockItem
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.registry.Registries
@@ -20,9 +22,12 @@ import net.minecraft.world.World
 import wdfeer.iron_refabricated.IronRefabricated.MOD_ID
 import kotlin.random.Random
 
+private val id = Identifier.of(MOD_ID, "rusty_moss")
+
 object RustyMoss : BlockWithEntity(FabricBlockSettings.create()) {
     fun register() {
-        Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, "rusty_moss"), this)
+        Registry.register(Registries.BLOCK, id, this)
+        Registry.register(Registries.ITEM, id, BlockItem(this, Item.Settings()))
     }
 
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = RustyMossBlockEntity(pos, state)
@@ -37,7 +42,7 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.create()) {
 }
 
 private val rustyMossBlockEntityType = FabricBlockEntityTypeBuilder.create(::RustyMossBlockEntity, RustyMoss).build()
-    .also { Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MOD_ID, "rusty_moss"), it) }
+    .also { Registry.register(Registries.BLOCK_ENTITY_TYPE, id, it) }
 
 const val CHANCE: Float = 0.004f // TODO: Decrease later
 
@@ -50,6 +55,7 @@ private class RustyMossBlockEntity(
     }
 
     companion object {
+        @Suppress("UNUSED_PARAMETER")
         fun tick(world: World?, pos: BlockPos?, state: BlockState?, blockEntity: RustyMossBlockEntity?) {
             val serverWorld = world as? ServerWorld ?: return
             if (pos == null) return
