@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "iron_refabricated:rusty_nugget"
+    },
+    "result": "minecraft:iron_nugget",
+    "experience": 0.1
+}
