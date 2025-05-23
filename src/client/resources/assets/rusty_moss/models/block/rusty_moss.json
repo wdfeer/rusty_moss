@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "iron_refabricated:block/rusty_moss"
+    "all": "rusty_moss:block/rusty_moss"
   }
 }

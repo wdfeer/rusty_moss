@@ -1,17 +1,16 @@
-package wdfeer.iron_refabricated
+package wdfeer.rusty_moss
 
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
-object IronRefabricated : ModInitializer {
-	const val MOD_ID = "iron_refabricated"
+object Mod : ModInitializer {
+	const val MOD_ID = "rusty_moss"
     private val logger = LoggerFactory.getLogger(MOD_ID)
 
 	override fun onInitialize() {
-		IronEnchantment.register()
 		RustyNugget.register()
 		RustyMoss.register()
 
-		logger.info("Iron just got refabricated!")
+		logger.info("Rusty Moss initialized!")
 	}
 }

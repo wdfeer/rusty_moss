@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "iron_refabricated:rusty_moss"
+          "name": "rusty_moss:rusty_moss"
         }
       ],
       "conditions": [

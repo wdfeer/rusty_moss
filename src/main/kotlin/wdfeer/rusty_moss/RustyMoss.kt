@@ -1,4 +1,4 @@
-package wdfeer.iron_refabricated
+package wdfeer.rusty_moss
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors
@@ -30,7 +30,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraft.world.biome.BiomeKeys
 import net.minecraft.world.gen.GenerationStep
-import wdfeer.iron_refabricated.IronRefabricated.MOD_ID
+import wdfeer.rusty_moss.Mod.MOD_ID
 import kotlin.random.Random
 
 private val id = Identifier.of(MOD_ID, "rusty_moss")

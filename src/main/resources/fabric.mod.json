@@ -1,29 +1,26 @@
 {
 	"schemaVersion": 1,
-	"id": "iron_refabricated",
+	"id": "rusty_moss",
 	"version": "${version}",
-	"name": "Iron Refabricated",
-	"description": "Diversify iron farming.",
+	"name": "Rusty Moss",
+	"description": "Alternative iron farming method.",
 	"authors": [
 		"wdfeer"
 	],
 	"contact": {
-		"sources": "https://github.com/wdfeer/iron_refabricated"
+		"sources": "https://github.com/wdfeer/rusty_moss"
 	},
 	"license": "GPL-3.0",
-	"icon": "assets/iron_refabricated/icon.png",
+	"icon": "assets/rusty_moss/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			{
-				"value": "wdfeer.iron_refabricated.IronRefabricated",
+				"value": "wdfeer.rusty_moss.Mod",
 				"adapter": "kotlin"
 			}
 		]
 	},
-	"mixins": [
-		"iron_refabricated.mixins.json"
-	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
 		"minecraft": "~1.20.1",

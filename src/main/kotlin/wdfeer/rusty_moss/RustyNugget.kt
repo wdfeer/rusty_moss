@@ -1,4 +1,4 @@
-package wdfeer.iron_refabricated
+package wdfeer.rusty_moss
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
@@ -7,7 +7,7 @@ import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
-import wdfeer.iron_refabricated.IronRefabricated.MOD_ID
+import wdfeer.rusty_moss.Mod.MOD_ID
 
 object RustyNugget : Item(Settings()) {
     fun register() {

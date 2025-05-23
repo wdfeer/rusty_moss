@@ -1,7 +1,7 @@
 {
     "type": "minecraft:blasting",
     "ingredient": {
-        "item": "iron_refabricated:rusty_nugget"
+        "item": "rusty_moss:rusty_nugget"
     },
     "result": "minecraft:iron_nugget",
     "experience": 0.1

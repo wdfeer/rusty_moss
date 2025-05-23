@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "iron_refabricated:item/rusty_nugget"
+    "layer0": "rusty_moss:item/rusty_nugget"
   }
 }

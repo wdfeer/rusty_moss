@@ -8,7 +8,7 @@
           "block": "minecraft:moss_block"
         },
         "state": {
-          "Name": "iron_refabricated:rusty_moss"
+          "Name": "rusty_moss:rusty_moss"
         }
       }
     ],
