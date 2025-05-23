@@ -5,9 +5,10 @@ import org.slf4j.LoggerFactory
 
 object Mod : ModInitializer {
 	const val MOD_ID = "rusty_moss"
-    private val logger = LoggerFactory.getLogger(MOD_ID)
+    val logger = LoggerFactory.getLogger(MOD_ID)
 
 	override fun onInitialize() {
+		Config.run { init() }
 		RustyNugget.register()
 		RustyMoss.register()
 

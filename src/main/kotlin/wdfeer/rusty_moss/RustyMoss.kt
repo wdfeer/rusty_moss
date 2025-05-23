@@ -69,8 +69,6 @@ object RustyMoss : BlockWithEntity(FabricBlockSettings.copy(Blocks.MOSS_BLOCK)) 
 
 private val rustyMossBlockEntityType = FabricBlockEntityTypeBuilder.create(::RustyMossBlockEntity, RustyMoss).build()
 
-const val CHANCE: Float = 0.0004f
-
 private class RustyMossBlockEntity(
     pos: BlockPos?,
     state: BlockState?
@@ -89,7 +87,7 @@ private class RustyMossBlockEntity(
 
             val waterPos = adjacentPositions.find { world.getBlockState(it).fluidState.fluid == Fluids.FLOWING_WATER }
 
-            if (waterPos != null && Random.nextFloat() < CHANCE) {
+            if (waterPos != null && Random.nextFloat() < Config.getDropChance()) {
                 val entity =
                     waterPos.toCenterPos().run { ItemEntity(serverWorld, x, y, z, ItemStack(RustyNugget)) }
                 world.spawnEntity(entity)
